@@ -48,7 +48,7 @@ a {
     text-decoration: none;
 }
 
-/* LOGIN STYLES */
+/* APP STYLES */
 
 
 .container {
@@ -58,29 +58,32 @@ a {
     background-color: var(--color-bg);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 
-.login {
+.app {
     width: 100%;
     max-width: 480px;
-    height: 88vh;
-    margin: 0 auto;
+    height: 100%;
+    max-height: 400px;
+    margin: 50px auto;
     background-color: var(--color-white);
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
-    position: relative;
+    /*overflow: auto;*/
 }
 
-.login-header {
+
+.app-header {
     display: flex;
-    align-items: center;
     padding: 16px;
+    align-items: center;
     justify-content: center;
     background-color: var(--color-lighter);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.login-header h1 {
+.app-header h1 {
     font-size: 30px;
     color: var(--color-dark);
     font-weight: 800;
@@ -88,24 +91,53 @@ a {
 }
 
 
-.body-header {
+/* LOGIN STYLES */
+
+.login-header {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px 16px;
 }
 
-.body-title{
+.login-title{
     color: var(--color-main);
     font-size: 24px;
     font-weight: 600;
     text-align: center;
 }
 
-.body-list{
-    padding: 0;
-    margin: 16px 0;
-    height: 70vh;
-    overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
+#loginForm > * {
+    display: block;
+    margin-bottom: 10px;
+    margin-inline: 100px;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    margin-top: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
