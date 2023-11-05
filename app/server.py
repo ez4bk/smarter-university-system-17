@@ -1,18 +1,21 @@
+
+# Includes all modules in this project.
+import sys
+import os
+import logging
 from flask import Flask
 from api import controller
 
-import logging
-
+app_path = os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
+sys.path.insert(0, app_path)
+base_path = os.path.join(app_path, '..')
+sys.path.insert(0, base_path)
 logger = logging.getLogger(__name__)
 
 
 app = Flask(__name__)
-app.config["UPLOAD_FOLDER"] = "static"
+app.config['UPLOAD_FOLDER'] = 'static'
 app.register_blueprint(controller)
 
-# @app.route('/')
-# def hello_world():
-#     return "<p>Hello, World!</p>"
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9083)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=9083)
