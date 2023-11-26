@@ -1,50 +1,71 @@
 import React, {useState} from 'react';
-import '../Login.css'
-
+import { Form, Input, Button, Checkbox, Typography } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+// import 'antd/dist/antd.css';
+import '../App.css'
+const { Title } = Typography;
 function LogIn(props) {
     let [userId, setUserId] = useState([])
     let [password, setPassword] = useState([])
 
-    const handleSubmit = e => {
+    const onFinish = e => {
         e.preventDefault()
         // TODO: Login Auth API
     }
 
     return (
-        <div className='container dark'>
-            <div className='app'>
-                <div className='app-header'>
-                    <h1>Smarter University System</h1>
+        <div className="app">
+            <Form
+                name="loginForm"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                className="login-form"
+            >
+                <div className="login-form-header">
+                    <Title level={3}>Log In</Title>
                 </div>
-                <div className='login-header'>
-                    <h2 className='login-title'>Log in</h2>
+                <div className="login-form-subheader">
+                    <h3>Log in to your account</h3>
                 </div>
-                <form onSubmit={handleSubmit} id='loginForm'>
-                    {/*<div className='login-column' >*/}
-                        <div>
-                            <label>User ID:</label>
-                            <input
-                                type = 'email'
-                                value = {userId}
-                                onChange={e=>setUserId(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label>Password:</label>
-                            <input
-                                type = 'password'
-                                value = {password}
-                                onChange = { e => setPassword(e.target.value )}
-                                required
-                            />
-                        </div>
-                        <button type='submit'>Login</button>
-                    {/*</div>*/}
-                </form>
-            </div>
-        </div>
+                <Form.Item
+                    name="username"
+                    rules={[{ required: true, message: 'Please input your username!' }]}
+                >
+                    <Input
+                        prefix={<UserOutlined className="site-form-item-icon" />}
+                        placeholder="Username"
+                    />
+                </Form.Item>
 
+                <Form.Item
+                    name="password"
+                    rules={[{ required: true, message: 'Please input your password!' }]}
+                >
+                    <Input
+                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        type="password"
+                        placeholder="Password"
+                    />
+                </Form.Item>
+
+                <Form.Item>
+                    <Form.Item name="remember" valuePropName="checked" noStyle>
+                        <Checkbox>Remember me</Checkbox>
+                    </Form.Item>
+
+                    <a className="login-form-forgot" href="/">
+                        Forgot password
+                    </a>
+                </Form.Item>
+
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" className="login-form-button">
+                        Log in
+                    </Button>
+                    Or <a href="/">register now!</a>
+                </Form.Item>
+            </Form>
+        </div>
     );
 }
 
